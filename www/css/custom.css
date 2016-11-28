@@ -1,0 +1,121 @@
+
+body{
+	word-break:break-word;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	font-size:15px;
+	font-weight: 10;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+
+.line-heigth-short{
+	line-height:0.3;	
+}
+/* prevent ios status bar overlapping */
+.ui-header{
+    padding-top:1.3em!important;
+}
+
+.ui-btn{
+    border: none !important; /* without border */
+    border-radius:0.4em; /* with border */
+}
+.ui-btn-corner-all, .ui-btn.ui-corner-all, .ui-slider-track.ui-corner-all, .ui-flipswitch.ui-corner-all, .ui-li-count {
+	border-radius:0.4em !important;
+}
+.ui-corner-all{
+	border-radius:0.4em; /* collapsible box border radius */
+}
+
+a{
+	data-shadow="false"
+}
+.ui-li-count{
+	/*custom */
+	border-radius:0 !important;
+}
+.logo{
+    width:100%;
+    background-color:inherit;
+    text-align:center;
+    padding:5px 0;
+    float:left;
+}
+
+.logo-right{
+
+}
+
+ul{
+	list-style-type: none;
+}
+
+.sen-img{
+	right:5%;
+	top:50%;
+	position:fixed;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.ui-icon-chevron-l-blue:after {
+	background-image: url("../libs/jquery-mobile/images/icons-png/carat-l-blue.png");
+	color:#00467f;
+}
+.ui-icon-chevron-r-blue:after {
+	background-image: url("../libs/jquery-mobile/images/icons-png/carat-r-blue.png");
+	color:#00467f;
+}
+.ui-icon-facebook:after {
+	background-image: url("../libs/jquery-mobile/images/icons-png/facebook.png");
+	color:#00467f;
+}
+.ui-icon-share:after {
+	background-image: url("../libs/jquery-mobile/images/icons-png/share.png");
+	color:#00467f;
+}
+.ui-icon-phone:after {
+	background-image: url("../libs/jquery-mobile/images/icons-png/phone.png");
+	color:#00467f;
+}
+.ui-overlay-d, .ui-page-theme-d, .ui-page-theme-d .ui-panel-wrapper {
+    background-color: #fff !important;
+}
+.ui-overlay-c, .ui-page-theme-c, .ui-page-theme-c .ui-panel-wrapper {
+    background-color: #fff !important;
+
+}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    background-color: #fff !important;
+}
+.ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b .ui-panel-wrapper {
+    background-color: #fff !important;
+
+}
+
+.back-white{
+	background-color: #fff !important;
+	color:#00467F !important;
+}
+
+div>.ui-btn-corner-all, .ui-btn.ui-corner-all, .ui-slider-track.ui-corner-all, .ui-flipswitch.ui-corner-all, .ui-li-count {
+	border-radius:0.0em !important;
+}
+
+div[data-role='header']>.nav-icon{
+	margin-top:1.3em;
+	border-radius:1em!important;
+}
+
+.emergencyCallFooter{
+	background:red !important;
+	color:white !important;
+	font-size:35px !important;
+	padding:4px !important;
+	margin-bottom:-1px !important;
+	border-radius:0px !important;
+}

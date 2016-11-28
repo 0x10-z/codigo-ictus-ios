@@ -1,0 +1,722 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="utf-8">
+        <title>Aplic. Web de jQuery Mobile</title>
+        <link href="libs/jquery-mobile/CodigoIctus.min.css" rel="stylesheet" type="text/css"/>
+        <link href="libs/jquery-mobile/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+        <link href="libs/jquery-mobile/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+        <script src="libs/jquery-mobile/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="libs/phonegap.js" type="text/javascript" charset="utf-8"></script>
+        <script src="cordova.js" type="text/javascript" charset="utf-8"></script>
+        <script>window.open = cordova.InAppBrowser.open;</script>
+        <script src="libs/fastclick.js" type="text/javascript"></script>
+        <script src="js/index.js" type="text/javascript"></script>
+        <script src="libs/jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+        <script src="js/hospitals.js" type="text/javascript"></script>
+        <script src="js/custom.js" type="text/javascript"></script>
+        <link href="css/custom.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div data-role="page" id="init" data-theme="d" >
+            <div data-role="header" data-position="fixed" data-theme="c" data-tap-toggle="false">
+                <button data-icon="share" data-iconpos="notext" onclick="shared();return false;" class="nav-icon nav-button" style="border-radius:50px"></button>
+                <div class="logo">
+                    <img border="0" src="img/codigoictus.png" style="width:122px"/>
+                </div>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <div data-inline="true">
+                    <button class="ui-btn ui-icon-edit ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="conceptos" >Conceptos Previos</button>
+                    <button class="ui-btn ui-icon-alert ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="sen-1" >Señales de Alerta</button>
+                    <button class="ui-btn ui-icon-check ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="test-cbht" >Test CBHT</button>
+                    <button class="ui-btn ui-icon-bars ui-nodisc-icon ui-btn-icon-right nav-button"  nav-direction="test-ries" >Cálculo de Riesgo</button>
+                    <button class="ui-btn ui-icon-forbidden ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="actividades" >Actividades Preventivas</button>
+                    <button class="ui-btn ui-icon-plus ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="ayuda" >Recursos</button>
+                    <button class="ui-btn ui-icon-tag ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="creditos" >Créditos</button>
+                    <!--
+                        <div data-role="controlgroup">
+                          <button class="ui-btn ui-icon-edit ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="conceptos" >Conceptos Previos</button>
+                          <button class="ui-btn ui-icon-alert ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="sen-1" >Señales de Alerta</button>
+                          <button class="ui-btn ui-icon-check ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="test-cbht" >Test CBHT</button>
+                          <button class="ui-btn ui-icon-bars ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="test-ries" >Cálculo de Riego</button>
+                          <button class="ui-btn ui-icon-forbidden ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="actividades" >Actividades Preventivas</button>
+                          <button class="ui-btn ui-icon-plus ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="ayuda" >Emergencia</button>
+                          <button class="ui-btn ui-icon-tag ui-nodisc-icon ui-btn-icon-right nav-button" nav-direction="creditos" >Créditos</button>
+                        </div>-->
+                    <!--
+                        <a href="#conceptos" data-transition="none" data-role="button" class="ui-btn ui-icon-edit ui-nodisc-icon ui-btn-icon-right">Conceptos Previos</a>
+                        <a href="#sen-1" data-transition="none" data-role="button" class="ui-btn ui-icon-alert ui-nodisc-icon ui-btn-icon-right">Señales de Alerta</a>
+                        <a href="#test-cbht"  data-transition="none" data-role="button" class="ui-btn ui-icon-check ui-nodisc-icon ui-btn-icon-right">Test CBHT</a>
+                        <a href="#test-ries" id="btn-test-riesgo" data-transition="none" data-role="button" class="ui-btn ui-icon-bars ui-nodisc-icon ui-btn-icon-right">Cálculo de Riesgo</a>
+                        <a href="#actividades"  data-transition="none" data-role="button" class="ui-btn ui-icon-forbidden ui-nodisc-icon ui-btn-icon-right">Actividades Preventivas</a>
+                        <a href="#ayuda" data-transition="none" data-role="button" class="ui-btn ui-icon-plus ui-nodisc-icon ui-btn-icon-right">Emergencia</a>
+                        <a href="#creditos" data-transition="none" data-role="button" class="ui-btn ui-icon-tag ui-nodisc-icon ui-btn-icon-right">Créditos</a>-->
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE 2 Conceptos Previos-->
+        <div data-role="page" id="conceptos" data-theme="b">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <!--<a href="#init" data-icon="carat-l" data-direction="reverse" data-transition="none" style="border-radius:19px;color:#00467F;margin-top:20px" data-role="button">Volver</a>-->
+                <h1>Datos</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content" data-theme="b">
+                <div data-role="collapsible-set" style="margin-top:0px;">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>Cada 6 segundos...</h3>
+                        <p>una persona muere a causa del Ictus.</p>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Cada 2 segundos...</h3>
+                        <p>el Ictus ataca a una persona sin distinción de edad o sexo.</p>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Cada año, 17 millones...</h3>
+                        <p>de personas sufren un Ictus;</p>
+                        <p>6 millones de ellas no logran sobrevivir.</p>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Alrededor de 30 millones...</h3>
+                        <p>de personas han sufrido un Ictus;</p>
+                        <p>La mayoría padece alguna discapacidad residual.</p>
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->
+        <!-- PAGE 2 Senales de Alerta-->
+        <div data-role="page" class="senales" id="sen-1" data-theme="d">
+            <a href="#page-2" style="display:none;"></a>
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false" data-id="foo2" >
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Señales</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <a href="#sen-2" data-role="button"  data-transition="none" style="right:5%;top:50%;position:fixed" data-icon="carat-r" data-iconpos="notext">Botón</a>  
+                <img src="img/sen-1.png" style="width:120px;margin-right:auto;margin-left:auto;display:block;margin-top:30px;">          
+                <div style="margin-right:30px;margin-left:30px;text-align:center;line-height:40px;">
+                    <p>Entumecimiento o debilidad de la cara, un brazo o una pierna, especialmente en un lado del cuerpo</p>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" class="senales"  id="sen-2" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false" data-id="foo2" >
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Señales</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <a href="#sen-1" data-role="button" data-direction="reverse" data-transition="none" style="50px;top:50%;position:fixed" data-icon="carat-l" data-iconpos="notext">Botón</a> 
+                <a href="#sen-3" data-role="button"  data-transition="none" style="right:5%;top:50%;position:fixed" data-icon="carat-r" data-iconpos="notext">Botón</a> 
+                <img src="img/sen-2.png" style="width:200px;margin-right:auto;margin-left:auto;display:block;margin-top:30px;">
+                <div style="margin-right:30px;margin-left:30px;text-align:center;line-height:40px;">
+                    <p>Confusión repentina; Afectación del habla o la comprensión</p>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" class="senales"  id="sen-3" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-id="foo2" data-tap-toggle="false" >
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Señales</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <a href="#sen-2" data-role="button" data-direction="reverse" data-transition="none" style="50px;top:50%;position:fixed" data-icon="carat-l" data-iconpos="notext">Botón</a> 
+                <a href="#sen-4" data-role="button" data-transition="none"  style="right:5%;top:50%;position:fixed" data-icon="carat-r" data-iconpos="notext">Botón</a> 
+                <img src="img/sen-3.png" style="width:200px;margin-right:auto;margin-left:auto;display:block;margin-top:30px;">
+                <div style="margin-right:30px;margin-left:30px;text-align:center;line-height:40px;">
+                    <p>Aparición repentina de problemas en la vista, en uno o los dos ojos</p>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" class="senales"  id="sen-4" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false" data-id="foo2"  >
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Señales</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <a href="#sen-3" data-role="button" data-direction="reverse" data-transition="none"  style="50px;top:50%;position:fixed" data-icon="carat-l" data-iconpos="notext">Botón</a> 
+                <a href="#sen-5" data-role="button" data-transition="none"  style="right:5%;top:50%;position:fixed" data-icon="carat-r" data-iconpos="notext">Botón</a> 
+                <img src="img/sen-4.png" style="width:170px;margin-right:auto;margin-left:auto;display:block;margin-top:30px;">
+                <div style="margin-right:30px;margin-left:30px;text-align:center;line-height:40px;">
+                    <p>Aparición repentina de problemas al caminar. Pérdida del equilibrio o de coordinación</p>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" class="senales"  id="sen-5" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false" data-id="foo2" >
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Señales</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <a href="#sen-4" data-role="button" data-direction="reverse" data-transition="none" style="50px;top:50%;position:fixed" data-icon="carat-l" data-iconpos="notext">Botón</a> 
+                <img src="img/sen-5.png" style="width:200px;margin-right:auto;margin-left:auto;display:block;margin-top:30px;">
+                <div style="margin-right:30px;margin-left:30px;text-align:center;line-height:40px;">
+                    <p>Cefalea fuerte repentina, sin causa conocida</p>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->
+        <!-- PAGE 2 TEST CBHT-->
+        <div data-role="page" id="test-cbht" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Test CBHT</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/cbht-cara.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-b"><img src="img/cbht-brazos.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-a">
+                        <h2 style="text-align:center">CARA</h2>
+                        <p style="text-align:center;">Fíjese en su cara. ¿Tiene la boca torcida?</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <h2 style="text-align:center">BRAZOS</h2>
+                        <p style="text-align:center;">¿Puede levantar ambos brazos?</p>
+                    </div>
+                    <div class="ui-block-a"><img src="img/cbht-habla.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-b"><img src="img/cbht-tiempo.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-a">
+                        <h2 style="text-align:center">HABLA</h2>
+                        <p style="text-align:center;">¿Habla con dificultad? ¿No se le entiende?</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <h2 style="text-align:center">TIEMPO</h2>
+                        <p style="text-align:center;">El tiempo es vital. Llame al 112.</p>
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->
+        <!-- PAGE 4 Calculo Riesgo -->
+        <div data-role="page" id="test-ries" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Test</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info2"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content" data-theme="e">
+                <form action="" method="get" id="form-test">
+                    
+                     <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                        <legend>Presión arterial:</legend>
+                        <input type="radio" checked name="Presion" id="Presion_0" value="11" />
+                            <label for="Presion_0">Más de 140 / 90 o no sabe</label>
+                            <input type="radio" name="Presion" id="Presion_1" value="12" />
+                            <label for="Presion_1">Entre 120 - 130 / 80 - 90</label>
+                            <input type="radio" name="Presion" id="Presion_2" value="13" />
+                            <label for="Presion_2">Menos 120 / 80</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                        <legend>Fibrilación auricular:</legend>
+                        <input type="radio" checked name="Fibrilacion" id="Fibrilacion_0" value="21" />
+                            <label for="Fibrilacion_0">Latidos cardiacos irregulares</label>
+                            <input type="radio" name="Fibrilacion" id="Fibrilacion_1" value="22" />
+                            <label for="Fibrilacion_1">No sabe</label>
+                            <input type="radio" name="Fibrilacion" id="Fibrilacion_2" value="23" />
+                            <label for="Fibrilacion_2">Latidos regulares</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                        <legend>Tabaquismo:</legend>
+                        <input type="radio" checked name="Tabaquismo" id="Tabaquismo_0" value="31" />
+                            <label for="Tabaquismo_0">Fumador</label>
+                            <input type="radio" name="Tabaquismo" id="Tabaquismo_1" value="32" />
+                            <label for="Tabaquismo_1">Está intentando dejar de fumar</label>
+                            <input type="radio" name="Tabaquismo" id="Tabaquismo_2" value="33" />
+                            <label for="Tabaquismo_2">No fumador</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                        <legend>Colesterol:</legend>
+                        <input type="radio" checked name="Colesterol" id="Colesterol_0" value="41" />
+                            <label for="Colesterol_0">Más de 240 o no sabe</label>
+                            <input type="radio" name="Colesterol" id="Colesterol_1" value="42" />
+                            <label for="Colesterol_1">Entre 200-239</label>
+                            <input type="radio" name="Colesterol" id="Colesterol_2" value="43" />
+                            <label for="Colesterol_2">Menos de 200</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Diabetes:</legend>
+                            <input type="radio" checked name="Diabetes" id="Diabetes_0" value="51" />
+                            <label for="Diabetes_0">Si</label>
+                            <input type="radio" name="Diabetes" id="Diabetes_1" value="52" />
+                            <label for="Diabetes_1">Prediabetes</label>
+                            <input type="radio" name="Diabetes" id="Diabetes_2" value="53" />
+                            <label for="Diabetes_2">No</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <legend>Ejercicio:</legend>
+                            <input type="radio" checked name="Ejercicio" id="Ejercicio_0" value="61" />
+                            <label for="Ejercicio_0">No hace</label>
+                            <input type="radio" name="Ejercicio" id="Ejercicio_1" value="62" />
+                            <label for="Ejercicio_1">Hace un poco</label>
+                            <input type="radio" name="Ejercicio" id="Ejercicio_2" value="63" />
+                            <label for="Ejercicio_2">Con regularidad</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <legend>Dieta:</legend>
+                            <input type="radio" checked name="Dieta" id="Dieta_0" value="71" />
+                            <label for="Dieta_0">Con sobrepeso</label>
+                            <input type="radio" name="Dieta" id="Dieta_1" value="72" />
+                            <label for="Dieta_1">Algo de sobrepeso</label>
+                            <input type="radio" name="Dieta" id="Dieta_2" value="73" />
+                            <label for="Dieta_2">Peso saludable</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Familiares con ACV (Accidente cerebrovascular):</legend>
+                            <input type="radio" checked name="ACV" id="ACV_0" value="81" />
+                            <label for="ACV_0">Si</label>
+                            <input type="radio" name="ACV" id="ACV_1" value="82" />
+                            <label for="ACV_1">No está seguro</label>
+                            <input type="radio" name="ACV" id="ACV_2" value="83" />
+                            <label for="ACV_2">No</label>
+                        </fieldset>
+                    </div>
+                    <!--
+                    <div data-role="fieldcontain">
+                        <label for="selectmenu" class="select">Presión arterial:</label>
+                        <select name="selectmenu" id="selectmenu">
+                            <option value="11">&rsaquo;140/90 o no sabe</option>
+                            <option value="12">120-130/80-90</option>
+                            <option value="13">&lsaquo;120/80</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="selectmenu" class="select">Fibrilación auricular:</label>
+                        <select name="selectmenu" id="selectmenu">
+                            <option value="21">Latidos cardiacos irregulares</option>
+                            <option value="22">No sabe</option>
+                            <option value="23">Latidos regulares</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="selectmenu" class="select">Tabaquismo:</label>
+                        <select name="selectmenu" id="selectmenu">
+                            <option value="31">Fumador</option>
+                            <option value="32">Está intentando dejar de fumar</option>
+                            <option value="33">No fumador</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="selectmenu" class="select" >Colesterol:</label>
+                        <select name="selectmenu" id="selectmenu" >
+                            <option value="41">&rsaquo;240 o no sabe</option>
+                            <option value="42">200-239</option>
+                            <option value="43">&lsaquo;200</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Diabetes:</legend>
+                            <input type="radio" checked name="Diabetes" id="Diabetes_0" value="51" />
+                            <label for="Diabetes_0">Si</label>
+                            <input type="radio" name="Diabetes" id="Diabetes_1" value="52" />
+                            <label for="Diabetes_1">Prediabetes</label>
+                            <input type="radio" name="Diabetes" id="Diabetes_2" value="53" />
+                            <label for="Diabetes_2">No</label>
+                        </fieldset>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="selectmenu" class="select">Ejercicio:</label>
+                        <select name="selectmenu" id="selectmenu">
+                            <option value="61">No hace ejercicio</option>
+                            <option value="62">Hace un poco de ejercicio</option>
+                            <option value="63">Hace ejercicio con regularidad</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="selectmenu" class="select">Dieta:</label>
+                        <select name="selectmenu" id="selectmenu">
+                            <option value="71">Con sobrepeso</option>
+                            <option value="72">Algo de sobrepeso</option>
+                            <option value="73">Peso saludable</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Familiares con ACV:</legend>
+                            <input type="radio" checked name="ACV" id="ACV_0" value="81" />
+                            <label for="ACV_0">Si</label>
+                            <input type="radio" name="ACV" id="ACV_1" value="82" />
+                            <label for="ACV_1">No está seguro</label>
+                            <input type="radio" name="ACV" id="ACV_2" value="83" />
+                            <label for="ACV_2">No</label>
+                        </fieldset>
+                    </div>-->
+                </form>
+                <button data-rel="popup" data-position-to="window" data-transition="pop" style="background:#00467F;color:#ffffff;" id="submit-test">Comprobar</button>      
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->
+        <!-- PAGE 2 -->
+        <div data-role="page" id="actividades" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Actividades</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a"><img src="img/prevencion-doc.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-b"><img src="img/prevencion-correr.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-a">
+                        <p style="text-align:center;">Conozca sus factores de riesgo; Tensión arterial alta, diabetes,...</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <p style="text-align:center;">Manténgase  activo físicamente y haga ejercicio con regularidad</p>
+                    </div>
+                    <div class="ui-block-a"><img src="img/prevencion-com.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-b"><img src="img/prevencion-alcohol.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-a">
+                        <p style="text-align:center;">Siga una dieta saludable. Intente mantener un consumo bajo de sal</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <p style="text-align:center;">Limite el consumo de alcohol</p>
+                    </div>
+                    <div class="ui-block-a"><img src="img/prevencion-cigarro.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-b"><img src="img/prevencion-leer.png" style="width:inherit; margin-right:auto; margin-left:auto; display:block"></div>
+                    <div class="ui-block-a">
+                        <p style="text-align:center;">Evite el humo del tabaco. Si fuma, busque ayuda para dejarlo</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <p style="text-align:center;">Aprenda a conocer los signos de aviso del Ictus</p>
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->      
+        <!-- PAGE 2 -->
+        <div data-role="page" id="ayuda" data-theme="a">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Recursos</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content" data-theme="b">
+                <h2 class="text-center">Teléfono de emergencia:</h2>
+                <p class="text-center">Si crees que sufres un Ictus, llama urgentemente al teléfono de emergencias 112 e indica "CÓDIGO ICTUS"</p>
+                <!-- Botones de 112 -->
+                <div data-inline="true" class="text-center" data-type="horizontal">                  
+                    <a href="tel:112" onClick="phoneCall();return false;" data-role="button" data-inline="true" data-icon="phone" data-iconpos="left">112</a>
+                </div>
+                <h2 class="text-center">Asociaciones de pacientes:</h2>
+                <div data-role="collapsible-set" style="margin-top:10px;" data-iconpos="right" data-collapsed-icon="info" data-expanded-icon="minus">
+<!-- UPDATE 1 -->
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>Fundación Ictus</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="http://www.fundacioictus.com/es" onClick="window.open(this.href,'_system');return false;">Fundación Ictus</a></h3>
+                            </li>
+                            <li>Carrer Còrsega, 271</li>
+                            <li>08008 Barcelona</li>
+                            <li>(Barcelona)</li>
+                            <li><a href="tel:0034672714144" onClick="window.open(this.href,'_system');return false;">Tfno: 00 34 672 714 144</a></li>
+                            <li><a href="mailto:ictus@fundacioictus.com" onClick="window.open(this.href,'_system');return false;">ictus@fundacioictus.com</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h4 style="white-space:normal">FEI</h4>
+                        <ul>
+                            <li>
+                                <h3><a href="http://www.ictusfederacion.es/" onClick="window.open(this.href,'_system');return false;">Federación Española de Ictus - FEI</a></h3>
+                            </li>
+                            <li>C/ Riereta, 4</li>
+                            <li>08830 - Sant Boi de Llobregat</li>
+                            <li>(Barcelona)</li>
+                            <li><a href="tel:936612525" onClick="window.open(this.href,'_system');return false;">Tfno: 93 661 25 25</a></li>
+                            <li><a href="mailto:fei.ictus.secretaria@hotmail.es" onClick="window.open(this.href,'_system');return false;">fei.ictus.secretaria@hotmail.es</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>FEASAN</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="http://anticoagulados.info/" onClick="window.open(this.href,'_system');return false;">Federación Española de Asociaciones de Anticoagulados - FEASAN</a></h3>
+                            </li>
+                            <li>C/ del Doctor Gil y Morte, 24 Puerta 7</li>
+                            <li>46007 - Valencia</li>
+                            <li>(Valencia)</li>
+                            <li><a href="tel:963525577" onClick="window.open(this.href,'_system');return false;">Tfno: 963 52 55 77</a></li>
+                            <li><a href="mailto:feasan@feasan.com" onClick="window.open(this.href,'_system');return false;">feasan@feasan.com</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>AGIM Mataró i Maresme</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="http://www.agimm.org/" onClick="window.open(this.href,'_system');return false;">AGIM Mataró i Maresme</a></h3>
+                            </li>
+                            <li>Carrer Monserrat i Cuadrada, 33-37</li>
+                            <li>Mataró</li>
+                            <li>(Barcelona)</li>
+                            <li><a href="tel:937409076" onClick="window.open(this.href,'_system');return false;">Tfno: 937 409 076</a></li>
+                            <li><a href="mailto:imm@agimm.org" onClick="window.open(this.href,'_system');return false;">imm@agimm.org</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Superar l’ictus BCN</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="http://www.fundacioictus.com/es/associacions-de-pacients/projecte-superar-lictus/" onClick="window.open(this.href,'_system');return false;">Superar l’ictus BCN</a></h3>
+                            </li>
+                            <li>Carrer Còrsega, 271</li>
+                            <li>08008 Barcelona</li>
+                            <li>(Barcelona)</li>
+                            <li><a href="tel:0034672714144" onClick="window.open(this.href,'_system');return false;">Tfno: 00 34 672 714 144</a></li>
+                            <li><a href="mailto:ictus@fundacioictus.com" onClick="window.open(this.href,'_system');return false;">ictus@fundacioictus.com</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>AMILL Associació Ictus Lleida</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="https://sites.google.com/a/amilleida.com/amilleida/" onClick="window.open(this.href,'_system');return false;">AMILL Associació Ictus Lleida</a></h3>
+                            </li>
+                            <li>Carrer Henri Dunant 1</li>
+                            <li>25003 Lleida </li>
+                            <li>(Lleida)</li>
+                            <li><a href="tel:973106834" onClick="window.open(this.href,'_system');return false;">Tfno: 973 106 834</a></li>
+                            <li><a href="mailto:amill@amilleida.com
+" onClick="window.open(this.href,'_system');return false;">amill@amilleida.com
+</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Ictus Girona</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="#">Ictus Girona</a></h3>
+                            </li>
+                            <li></li>
+                            <li></li>
+                            <li>(Girona)</li>
+                            <li><a href="tel:" onClick="window.open(this.href,'_system');return false;"></a></li>
+                            <li><a href="ictusgirona@gmail.com" onClick="window.open(this.href,'_system');return false;">ictusgirona@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>Ictus Tarragona</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="#">Ictus Tarragona</a></h3>
+                            </li>
+                            <li></li>
+                            <li></li>
+                            <li>(Girona)</li>
+                            <li><a href="tel:" onClick="window.open(this.href,'_system');return false;"></a></li>
+                            <li><a href="ictustarragona@gmail.com" onClick="window.open(this.href,'_system');return false;">ictustarragona@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true">
+                        <h3>AVAN Amics de la Neurologia Associació Vallès</h3>
+                        <ul>
+                            <li>
+                                <h3><a href="http://www.amicsdelaneurologia.org/" onClick="window.open(this.href,'_system');return false;">AVAN Amics de la Neurologia Associació Vallès</a></h3>
+                            </li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li><a href="tel:" onClick="window.open(this.href,'_system');return false;"></a></li>
+                            <li><a href="" onClick="window.open(this.href,'_system');return false;"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- END UPDATE 1 -->
+                
+                <h2 class="text-center">Hospitales con Código Ictus:</h2>
+                <div data-role="collapsible-set" id="hospitals-json">
+                </div>
+                <p>Esta es una lista actualizada a fecha 10/2015. Se recomienda acudir al siguiente enlace para asegurar que no hay cambios recientes en tu Comunidad Autónoma</p>
+                <a href="http://www.sen-ictus.es/donde-acudir" onClick="window.open(this.href,'_system');return false;" class="text-center">http://www.sen-ictus.es/donde-acudir</a>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->  
+        <!-- PAGE 2 -->
+        <div data-role="page" id="creditos" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="c" style="padding-top:5px;" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Créditos</h1>
+                <button data-icon="info" data-iconpos="notext" nav-direction="info"class="nav-icon nav-button" style="border-radius:50px">Botón</button>
+            </div>
+            <div data-role="content" style="text-align:center;">
+                <h3>Con la participación de:</h3>
+                <a href="http://www.fundacioictus.com/es" onClick="window.open(this.href, '_system');return false;"><img style="width:225px; text-align:center;" src="img/fundacion-ictus.jpg"></a>
+                <a href="http://www.alianzadepacientes.org" onClick="window.open(this.href,'_system');return false;"><img style="width:225px; text-align:center;" src="img/alianza-general.png"></a>
+                <h3>Colabora:</h3>
+                <a href="http://www.bostonscientific.com/" onClick="window.open(this.href,'_system');return false;"><img style="width:225px; text-align:center;" onClick="window.open('','_system');return false;" src="img/bsc-preven.png"></a>
+                <h3>Desarrollado por:</h3>
+                <a href="http://ikerocio.com"  onClick="window.open(this.href,'_system');return false;"><img style="width:179px; text-align:center;" src="img/ocioz-softdev.png"></a>
+                <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                    <div data-role="navbar" data-theme="b">
+                        <ul>
+                            <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE  -->  
+        <div data-role="page" id="info" data-theme="d">
+            <div data-role="header" data-position="fixed" style="padding-top:5px;" data-theme="d" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>+ info</h1>
+            </div>
+            <div data-role="content" class="text-center" >
+                <h2>ADVERTENCIA</h2>
+                <p>Las recomendaciones mencionadas en la presente aplicación solo tienen propósitos informativos, no pretenden ser un sustituto al              sentido común y al buen juicio médico. 
+                    El Cálculo de Riesgo fue proporcionado por © 2014 National Stroke Association. Reproducido con permiso. Por favor, visita www.stroke.org para recursos educativos sobre Ictus.
+                    Los autores no pretenden que la aplicación sea el único factor a considerar en caso de una emergencia médica. 
+                    Se recomienda a los usuarios informarse de los teléfonos de emergencia en su localidad y tenerlos siempre disponibles.
+                </p>
+                <p>Derechos reservados.</p>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="info2" data-theme="d">
+            <div data-role="header" data-position="fixed" style="padding-top:5px;" data-theme="d" data-tap-toggle="false">
+                <a href="#init" data-icon="chevron-l-blue" class="back-white" data-direction="reverse" data-transition="none" style="border-radius:19px;margin-top:20px" data-role="button">Volver</a>
+                <h1>Nota</h1>
+            </div>
+            <div data-role="content" >
+                <p class="text-center">Pregunte a su profesional de atención médica cómo reducir su riesgo de sufrir un ACV. 
+                    Para reducir su riesgo:
+                </p>
+                <ul>
+                    <li>·Conozca su presión arterial.</li>
+                    <li>·Sepa si tiene fibrilación auricular.</li>
+                    <li>·Si fuma, deje de hacerlo.</li>
+                    <li>·Sepa si tiene el colesterol alto.</li>
+                    <li>·Si tiene diabetes, siga las recomendaciones para controlarla.</li>
+                    <li>·Incluya hacer ejercicio en su rutina diaria.</li>
+                    <li>·Coma alimentos con bajo contenido de sodio (sal) y grasas.</li>
+                </ul>
+                <h2 class="text-center">ADVERTENCIA</h2>
+                <p class="text-center">Las recomendaciones mencionadas en la presente aplicación solo tienen propósitos informativos, no pretenden ser un sustituto al              sentido común y al buen juicio médico. 
+                    El Cálculo de Riesgo fue proporcionado por © 2014 National Stroke Association. Reproducido con permiso. Por favor, visita www.stroke.org para recursos educativos sobre Ictus.
+                    Los autores no pretenden que la aplicación sea el único factor a considerar en caso de una emergencia médica. 
+                    Se recomienda a los usuarios informarse de los teléfonos de emergencia en su localidad y tenerlos siempre disponibles.
+                </p>
+                <p class="text-center">Derechos reservados.</p>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b" data-id="foo1"  data-tap-toggle="false">
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#" onclick="phoneCall();return false;"  class="border-cero emergencyCallFooter" data-transition="none" data-role="button" data-icon="" data-iconpos="right"><img src="img/phone.png">112</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ENDPAGE -->
+        
+    </body>
+</html>
